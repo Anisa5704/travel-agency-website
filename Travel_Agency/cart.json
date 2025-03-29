@@ -1,0 +1,118 @@
+{
+  "destinations": [
+    {
+      "id": "destination1",
+      "name": "Brezovica",
+      "image": "brezovica.jpg",
+      "price": 50
+    },
+    {
+      "id": "destination2",
+      "name": "Korçë",
+      "image": "korce.jpg",
+      "price": 40
+    },
+    {
+      "id": "destination3",
+      "name": "Bogë-Pejë",
+      "image": "boge.jpg",
+      "price": 30
+    },
+    {
+      "id": "destination4",
+      "name": "Valbonë",
+      "image": "valbne.jpg",
+      "price": 30
+    },
+    {
+      "id": "destination5",
+      "name": "Theth",
+      "image": "Church-of-Theth.webp",
+      "price": 22
+    },
+    {
+      "id": "destination6",
+      "name": "Pogradec",
+      "image": "Drilon-5.jpg",
+      "price": 25
+    },
+    {
+      "id": "destination7",
+      "name": "Dardhë",
+      "image": "Dardhe.jpg",
+      "price": 22
+    },
+    {
+      "id": "hiddenDestination1",
+      "name": "North explore",
+      "image": "Nalbania.jpg",
+      "price": 100
+    },
+    {
+      "id": "hiddenDestination2",
+      "name": "Zvërnec",
+      "image": "zvernec.jpg",
+      "price": 30
+    },
+    {
+      "id": "hiddenDestination3",
+      "name": "Saranda",
+      "image": "caption.jpg",
+      "price": 190
+    },
+    {
+      "id": "hiddenDestination4",
+      "name": "Ksamil",
+      "image": "ksamili.jpg",
+      "price": 50
+    },
+    {
+      "id": "hiddenDestination5",
+      "name": "Gjirokaster",
+      "image": "gjirokasterguide.jpg",
+      "price": 20
+    },
+    {
+      "id": "hiddenDestination6",
+      "name": "Berat",
+      "image": "unesco1.jpg",
+      "price": 20
+    },
+    {
+      "id": "hiddenDestination7",
+      "name": "Elbasan",
+      "image": "elbasan-albaniatouristplaces.jpg",
+      "price": 9
+    },
+    {
+      "id": "hiddenDestination8",
+      "name": "Lezhe",
+      "image": "lezhe.jpg",
+      "price": 20
+    },
+    {
+      "id": "hiddenDestination9",
+      "name": "Shkodër",
+      "image": "shkoder.jpg",
+      "price": 56
+    },
+    {
+      "id": "hiddenDestination10",
+      "name": "Rana e Hedhun",
+      "image": "ranaEhedhun.jpg",
+      "price": 20
+    },
+    {
+      "id": "hiddenDestination11",
+      "name": "Shëngjini",
+      "image": "images.jpg",
+      "price": 30
+    },
+    {
+      "id": "hiddenDestination12",
+      "name": "Durres",
+      "image": "durres-things-to-do1.jpg",
+      "price": 15
+    }
+  ]
+}

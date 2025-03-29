@@ -1,0 +1,156 @@
+{
+  "destinations": [
+    {
+      "id": "destination1",
+      "name": "Brezovica",
+      "price": 50,
+      "categories": ["Mal", "Winter"],
+      "description": "Brezovicë-Prevallë-Prizren",
+      "image": "brezovica.jpg"
+    },
+    {
+      "id": "destination2",
+      "name": "Korçë",
+      "price": 40,
+      "categories": ["Winter", "City"],
+      "description": "Korçë",
+      "image": "korce.jpg"
+    },
+    {
+      "id": "destination3",
+      "name": "Bogë-Pejë",
+      "price": 30,
+      "categories": ["Mal", "Winter"],
+      "description": "Bogë",
+      "image": "boge.jpg"
+    },
+    {
+      "id": "destination4",
+      "name": "Valbonë",
+      "price": 30,
+      "categories": ["Mal", "Winter"],
+      "description": "Valbonë",
+      "image": "valbne.jpg"
+    },
+    {
+      "id": "destination5",
+      "name": "Theth",
+      "price": 22,
+      "categories": ["Natyrë", "Winter"],
+      "description": "Theth-Qafë Thore",
+      "image": "Church-of-Theth.webp"
+    },
+    {
+      "id": "destination6",
+      "name": "Pogradec",
+      "price": 25,
+      "categories": ["Liqen", "Natyrë"],
+      "description": "Drilon-Tushemisht",
+      "image": "Drilon-5.jpg"
+    },
+    {
+      "id": "destination7",
+      "name": "Dardhë",
+      "price": 22,
+      "categories": ["Natyrë", "Winter"],
+      "description": "Dardhë-Korçë",
+      "image": "Dardhe.jpg"
+    },
+    {
+      "id": "hiddenDestination1",
+      "name": "North explore",
+      "price": 100,
+      "categories": ["Natyrë", "Summer"],
+      "description": "Full north riviera trip",
+      "image": "Nalbania.jpg"
+    },
+    {
+      "id": "hiddenDestination2",
+      "name": "Zvërnec",
+      "price": 30,
+      "categories": ["Natyrë & histori", "Summer"],
+      "description": "Zbulo brigjet dhe historinë",
+      "image": "zvernec.jpg"
+    },
+    {
+      "id": "hiddenDestination3",
+      "name": "Saranda",
+      "price": 190,
+      "categories": ["Natyrë", "Summer"],
+      "description": "All inclusive package",
+      "image": "caption.jpg"
+    },
+    {
+      "id": "hiddenDestination4",
+      "name": "Ksamil",
+      "price": 50,
+      "categories": ["Natyrë", "Summer"],
+      "description": "Boat trip",
+      "image": "ksamili.jpg"
+    },
+    {
+      "id": "hiddenDestination5",
+      "name": "Gjirokaster",
+      "price": 20,
+      "categories": ["Histori", "Kulture"],
+      "description": "Historical and cultural trip",
+      "image": "gjirokasterguide.jpg"
+    },
+    {
+      "id": "hiddenDestination6",
+      "name": "Berat",
+      "price": 20,
+      "categories": ["Histori", "Kulture"],
+      "description": "Cultural trip",
+      "image": "unesco1.jpg"
+    },
+    {
+      "id": "hiddenDestination7",
+      "name": "Elbasan",
+      "price": 9,
+      "categories": ["Histori", "Kulture"],
+      "description": "Cultural & historic trip",
+      "image": "elbasan-albaniatouristplaces.jpg"
+    },
+    {
+      "id": "hiddenDestination8",
+      "name": "Lezhe",
+      "price": 20,
+      "categories": ["Histori", "Kulture"],
+      "description": "Cultural & Historical trip",
+      "image": "lezhe.jpg"
+    },
+    {
+      "id": "hiddenDestination9",
+      "name": "Shkodër",
+      "price": 56,
+      "categories": ["Kulturë", "Natyrë"],
+      "description": "All inclusive trip",
+      "image": "shkoder.jpg"
+    },
+    {
+      "id": "hiddenDestination10",
+      "name": "Rana e Hedhun",
+      "price": 20,
+      "categories": ["Natyrë", "Summer"],
+      "description": "Në Dunat e Shqipërisë!",
+      "image": "ranaEhedhun.jpg"
+    },
+    {
+      "id": "hiddenDestination11",
+      "name": "Shëngjini",
+      "price": 30,
+      "categories": ["Natyrë", "Summer"],
+      "description": "Coast and fun trip",
+      "image": "images.jpg"
+    },
+    {
+      "id": "hiddenDestination12",
+      "name": "Durres",
+      "price": 15,
+      "categories": ["Natyrë", "Kulture"],
+      "description": "Cultural & Historical trip",
+      "image": "durres-things-to-do1.jpg"
+    }
+  ]
+}

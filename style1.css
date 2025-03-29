@@ -1,0 +1,298 @@
+/* Global Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body Styling */
+body {
+    background-image: linear-gradient(to right, #e2e2e2, #c9d6ff);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+/* Container */
+.container {
+    position: relative;
+    max-width: 80%;
+    margin: auto;
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.wrapper {
+    width: 100%;
+    height: 400px;
+}
+
+.wrapper-holder {
+    display: flex;
+    height: 100%;
+    animation: slider 20s infinite;
+}
+
+.image {
+    flex: 0 0 100%;
+    background-size: cover;
+    background-position: center;
+}
+
+/* Specific Slide Backgrounds */
+#durres {
+    background-image: url('durres.jpg');
+}
+
+#skenderbeu {
+    background-image: url('berat.webp');
+}
+
+#korca {
+    background-image: url('korca.webp');
+}
+
+#jug {
+    background-image: url('juguuu.jpg');
+}
+
+/* Slide Indicators */
+.button-holder {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+}
+
+.button {
+    width: 12px;
+    height: 12px;
+    background-color: white;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: transform 0.3s, background-color 0.3s;
+}
+
+.button:hover {
+    background-color: cyan;
+    transform: scale(1.2);
+}
+
+/* Slider Animation */
+@keyframes slider {
+    0%, 25% { transform: translateX(0); }
+    26%, 50% { transform: translateX(-100%); }
+    51%, 75% { transform: translateX(-200%); }
+    76%, 100% { transform: translateX(-300%); }
+}
+
+/* Forms Container */
+.forms-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    width:100%;
+    position: absolute;
+    bottom:5%;
+    left:50%;
+    transform:translateX(-50%);
+
+}
+
+/* Left Form */
+.form-left, .form-right {
+    width: 45%;
+}
+.form-text{
+    font-size:1.2rem;
+    text-align:center;
+    margin-bottom:15px;
+    color:#fff;
+}
+
+form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Form Buttons */
+input[type="submit"] {
+    padding: 10px 20px;
+    font-size: 1rem;
+    border: none;
+    cursor: pointer;
+    background-color: #3498db;
+    color: white;
+    transition: background-color 0.3s;
+    border-radius: 5px;
+}
+
+input[type="submit"]:hover {
+    background-color: #2980b9;
+}
+/* Teksti sipër formave */
+.form-text {
+    font-size: 1.2rem;
+    text-align: center;
+    margin-bottom: 15px;
+    color: #fff;  /* Mund ta ndryshoni sipas dëshirës */
+}
+
+
+
+
+
+
+
+
+
+
+/*
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/*body, html {
+    height: 100%;
+    font-family: Arial, sans-serif;
+}
+
+
+.content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    color: #fff;
+    padding: 20px;
+}
+
+.content img {
+    margin: 10px;
+}
+
+.content h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+
+form {
+    margin-top: 20px;
+}
+
+input[type="submit"] {
+    background: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    margin: 5px;
+    transition: background 0.3s;
+}
+
+input[type="submit"]:hover {
+    background: rgba(0, 0, 0, 0.7);
+}
+
+button:hover {
+    text-decoration: underline;
+    color: cornflowerblue;
+}
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+/* General body styling */
+/*body {
+    flex: 1;
+    background: linear-gradient(to right, #e2e2e2, #86c989);
+    display: flex;
+    /*flex-direction: column;*/
+    /*align-items: center;*/
+  /* justify-content: center;
+    padding: 2rem;
+}
+
+/* Styling the heading */
+/*h1 {
+    font-size: 32px;
+    color:  #165220;
+    margin-top: 20px;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Styling images */
+/*img {
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    margin: 10px;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+/* Hover effect for images */
+/*img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Styling form containers */
+/*form {
+    margin: 20px auto;
+    padding: 20px;
+    width: 300px;
+    background: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    text-align: center;
+}
+
+/* Styling form text */
+/*form p {
+    font-size: 18px;
+    color: #34495e;
+    margin-bottom: 10px;
+}
+
+/* Styling buttons */
+/*form input[type="submit"] {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+form input[type="submit"]:hover {
+    background-color: #2980b9;
+}
+
+/* Adding responsiveness*/
+/*@media (max-width: 768px) {
+    img {
+        width: 90%;
+        height: auto;
+    }
+
+    form {
+        width: 90%;
+    }
+}

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explore Albania!</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap JavaScript Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap');
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f9fa;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            background: linear-gradient(to bottom, #007bff, #0056b3);
+            color: white;
+            text-align: center;
+            padding: 50px 20px;
+        }
+
+        .hero-section h1 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 800;
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+
+        .hero-section p {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 400;
+            font-size: 1.2rem;
+        }
+
+        /* Buttons */
+        .btn-primary, .btn-success {
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+            border-radius: 30px;
+        }
+
+        .btn-primary:hover, .btn-success:hover {
+            box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.3);
+            transform: translateY(-2px);
+            transition: all 0.3s ease-in-out;
+        }
+
+        /* Carousel */
+        .carousel-inner .carousel-item {
+            height: 500px;
+        }
+
+        .carousel-inner .carousel-item img {
+            object-fit: cover;
+            height: 100%;
+            width: 100%;
+        }
+
+        .carousel-caption {
+            background: rgba(0, 0, 0, 0.5);
+            padding: 10px 20px;
+            border-radius: 10px;
+        }
+
+        /* Shadow for forms */
+        .border-rounded {
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+        }
+
+        .shadow {
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+
+<body>
+<!-- Hero Section -->
+<div class="hero-section">
+    <h1>Explore Albania!</h1>
+    <p>Discover the beauty and wonders of Albania, one destination at a time.</p>
+</div>
+
+<!-- Image Carousel -->
+<div id="carouselExampleIndicators" class="carousel slide mt-4" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
+                aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+                aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+                aria-label="Slide 3"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3"
+                aria-label="Slide 4"></button>
+    </div>
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img src="durres.jpg" alt="Durres" class="d-block w-100">
+            <div class="carousel-caption">
+                <h5>Durres</h5>
+                <p>Experience the vibrant beaches and history of Durres.</p>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img src="skenderbeu.jpg" alt="Skenderbeu Square" class="d-block w-100">
+            <div class="carousel-caption">
+                <h5>Skenderbeu Square</h5>
+                <p>The heart of Tirana awaits you.</p>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img src="korca.webp" alt="Korca" class="d-block w-100">
+            <div class="carousel-caption">
+                <h5>Korca</h5>
+                <p>A city full of tradition and charm.</p>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img src="southAlb.jpg" alt="The South" class="d-block w-100">
+            <div class="carousel-caption">
+                <h5>The South</h5>
+                <p>Explore the unspoiled beauty of Southern Albania.</p>
+            </div>
+        </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+            data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+            data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>
+
+<!-- Forms Section -->
+<div class="container text-center my-5">
+    <div class="row">
+        <div class="col-md-6 mb-4">
+            <div class="p-4 border-rounded">
+                <p class="fs-5">Come and explore Albania's wonders.</p>
+                <form method="post" action="faqjaEpare.php">
+                    <button type="submit" name="btnExplore" class="btn btn-primary btn-lg">Explore Albania</button>
+                </form>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="p-4 border-rounded">
+                <p class="fs-5">Select how you want your vacation to be:</p>
+                <form method="post" action="faqjaEpare.php">
+                    <button type="submit" name="btnPersonalise" class="btn btn-success btn-lg">Personalise Your Trip</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+
+</html>
+

@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Account</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to bottom, #f5f5f5, #e8e8e8);
+      color: #333;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 80px auto;
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 16px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+      position: relative;
+    }
+
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 20px 0;
+    }
+
+    .header .profile-picture {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 4px solid #1e88e5;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      flex-shrink: 0;
+      display: none;
+    }
+
+    .header .profile-picture img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .header-text {
+      flex-grow: 1;
+    }
+
+    .header-text h1 {
+      margin: 0;
+      font-size: 1.8rem;
+      color: #333;
+      position: relative;
+    }
+
+    .header-text h1:hover {
+      color: #1e88e5;
+      text-shadow: 2px 2px 8px rgba(30, 136, 229, 0.5);
+      cursor: pointer;
+    }
+
+    .header-text p {
+      margin: 5px 0;
+      color: #555;
+      font-size: 1rem;
+    }
+
+    .options {
+      margin-top: 20px;
+    }
+
+    .option {
+      background: linear-gradient(145deg, #ffffff, #f0f0f0);
+      border-radius: 16px;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .option:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    }
+
+    .option h2 {
+      font-size: 1.5rem;
+      color: #1e88e5;
+      margin-bottom: 10px;
+      transition: color 0.3s ease;
+    }
+
+    .option h2:hover {
+      color: #1565c0;
+      cursor: pointer;
+    }
+
+    .option p {
+      margin: 0 0 10px;
+      color: #666;
+    }
+
+    button {
+      padding: 12px 20px;
+      font-size: 1rem;
+      color: white;
+      background: linear-gradient(to right, #2196f3, #1e88e5);
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: transform 0.3s ease, background-color 0.3s ease;
+    }
+
+    button:hover {
+      transform: scale(1.05);
+      background-color: #1565c0;
+    }
+
+    input[type="text"], input[type="tel"], input[type="file"] {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 15px;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      box-sizing: border-box;
+      font-size: 1rem;
+    }
+
+    input[type="file"] {
+      padding: 5px;
+    }
+
+    .error-message {
+      color: red;
+      font-size: 0.9rem;
+      margin-bottom: 15px;
+      display: none;
+    }
+
+    .delete-button {
+      background: linear-gradient(to right, #f85032, #e73827);
+      margin-top: 20px;
+    }
+
+    .delete-button:hover {
+      background-color: #d32f2f;
+    }
+
+    .plane {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      width: 50px;
+      transform: translateX(-50%);
+      animation: fly-around 10s infinite ease-in-out;
+    }
+
+    @keyframes fly-around {
+      0% {
+        transform: translate(-50%, -50%) translateX(-200px) translateY(0) rotate(15deg);
+      }
+      25% {
+        transform: translate(-50%, -50%) translateX(0) translateY(-100px) rotate(30deg);
+      }
+      50% {
+        transform: translate(-50%, -50%) translateX(200px) translateY(0) rotate(-15deg);
+      }
+      75% {
+        transform: translate(-50%, -50%) translateX(0) translateY(100px) rotate(-30deg);
+      }
+      100% {
+        transform: translate(-50%, -50%) translateX(-200px) translateY(0) rotate(15deg);
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <img src="plane.png" alt="Flying Plane" class="plane">
+  <div class="header">
+    <div class="profile-picture" id="profile-container">
+      <img id="profile-img" src="" alt="Profile Picture">
+    </div>
+    <div class="header-text">
+      <h1>Welcome, <span id="username-display"> </span>!</h1>
+      <p><strong>Emri i perdoruesit:</strong> <span id="current-username">user</span></p>
+      <p><strong>Celular:</strong> <span id="current-phone"> </span></p>
+    </div>
+  </div>
+
+  <div class="options">
+    <div class="option">
+      <h2>Detajet personale</h2>
+      <form id="details-form">
+        <input type="text" id="update-username" placeholder="Vendos nje username te ri">
+        <input type="tel" id="update-phone" placeholder="Vendos nje numer te ri">
+        <div class="error-message" id="phone-error">Gabim! Lejohen vetem numrat :/</div>
+        <input type="file" id="update-photo" accept="image/*">
+        <button type="button" id="save-changes">Ruaj ndryshimet!</button>
+      </form>
+    </div>
+
+    <div class="option">
+      <h2>Fshi account-in!</h2>
+      <p>Nese do te fshish account-in tend kliko me poshte. Do te ridrejtohesh te faqja e sign in serish !</p>
+      <button class="delete-button" id="delete-account">Fshi account-in!</button>
+    </div>
+  </div>
+
+  <!-- New Button to go back to homepage -->
+  <button id="go-homepage" onclick="window.location.href='homepage.html'">Kthehu në Homepage</button>
+</div>
+
+<script>
+  // Load data from localStorage if available
+  let currentUsername = localStorage.getItem("username") || "user";
+  let currentPhone = localStorage.getItem("phone") || "";
+  let storedProfileImg = localStorage.getItem("profileImg");
+
+  // Update the UI with loaded data
+  document.getElementById("username-display").textContent = currentUsername;
+  document.getElementById("current-username").textContent = currentUsername;
+  document.getElementById("current-phone").textContent = currentPhone;
+
+  if (storedProfileImg) {
+    document.getElementById("profile-img").src = storedProfileImg;
+    document.getElementById("profile-container").style.display = "block";
+  }
+
+  const saveChangesButton = document.getElementById("save-changes");
+  const profileImg = document.getElementById("profile-img");
+  const profileContainer = document.getElementById("profile-container");
+  const updatePhotoInput = document.getElementById("update-photo");
+  const updateUsernameInput = document.getElementById("update-username");
+  const updatePhoneInput = document.getElementById("update-phone");
+  const phoneError = document.getElementById("phone-error");
+
+  saveChangesButton.addEventListener("click", () => {
+    // Save Profile Image to localStorage
+    const file = updatePhotoInput.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = function (e) {
+        profileImg.src = e.target.result;
+        profileContainer.style.display = "block";
+        localStorage.setItem("profileImg", e.target.result);
+      };
+      reader.readAsDataURL(file);
+    }
+
+    const newUsername = updateUsernameInput.value.trim();
+    if (newUsername) {
+      currentUsername = newUsername;
+      document.getElementById("username-display").textContent = currentUsername;
+      document.getElementById("current-username").textContent = currentUsername;
+      localStorage.setItem("username", currentUsername);
+    }
+
+    const newPhone = updatePhoneInput.value.trim();
+    if (/^\d*$/.test(newPhone)) {
+      currentPhone = newPhone;
+      document.getElementById("current-phone").textContent = currentPhone;
+      phoneError.style.display = "none";
+      localStorage.setItem("phone", currentPhone);
+    } else if (newPhone) {
+      phoneError.style.display = "block";
+    }
+
+    updatePhotoInput.value = "";
+    updateUsernameInput.value = "";
+    updatePhoneInput.value = "";
+  });
+
+  const deleteAccountButton = document.getElementById("delete-account");
+  deleteAccountButton.addEventListener("click", () => {
+    window.location.href = 'delete-confirmation.html';
+  });
+</script>
+</body>
+</html>
+

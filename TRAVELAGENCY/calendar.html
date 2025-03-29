@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Calendar</title>
+    <style>
+        body {
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background: url('img_1.png') no-repeat center center/cover;
+            background-attachment: fixed;
+            backdrop-filter: blur(5px);
+        }
+
+        .calendar {
+            width: 500px;
+            background: rgba(0, 128, 128, 0.9);
+            border-radius: 15px;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .calendar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background: linear-gradient(145deg, #1E90FF, #00CED1);
+            color: white;
+            border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .calendar-header button {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.6rem;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .calendar-header button:hover {
+            color: #FF4500;
+        }
+
+        .calendar-header h2 {
+            margin: 0;
+            font-size: 1.7rem;
+        }
+
+        .calendar-body {
+            padding: 15px;
+        }
+
+        .calendar-days {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 8px;
+        }
+
+        .calendar-day {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            border-radius: 10px;
+            color: #fff;
+            font-size: 1.1rem;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            background-color: rgba(30, 144, 255, 0.8);
+        }
+
+        .calendar-day:hover {
+            background-color: rgba(0, 206, 209, 0.7);
+            transform: scale(1.1);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .calendar-day.today {
+            background-color: #1E90FF;
+            color: white;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .reminder-modal {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 90%;
+            max-width: 400px;
+            background: rgba(0, 128, 128, 0.95);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            z-index: 1000;
+            display: none;
+        }
+
+        .reminder-modal input,
+        .reminder-modal button {
+            width: 90%;
+            margin: 10px 0;
+            padding: 10px;
+            border: none;
+            border-radius: 8px;
+        }
+
+        .reminder-modal button {
+            background-color: #1E90FF;
+            color: white;
+            cursor: pointer;
+        }
+
+        .reminder-modal button:hover {
+            background-color: #00CED1;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+            display: none;
+        }
+
+        .footer-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin: 20px 0;
+        }
+
+        .footer-buttons button {
+            width: 45%;
+            padding: 10px 20px;
+            background-color: #1E90FF;
+            color: white;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, box-shadow 0.2s ease;
+        }
+
+        .footer-buttons button:hover {
+            background-color: #00CED1;
+        }
+    </style>
+</head>
+<body>
+<div class="calendar">
+    <div class="calendar-header">
+        <button id="prev">&#8249;</button>
+        <h2 id="month-year">Month Year</h2>
+        <button id="next">&#8250;</button>
+    </div>
+    <div class="calendar-body">
+        <div class="calendar-days" id="calendar-days">
+            <!-- Days will be dynamically generated here -->
+        </div>
+    </div>
+    <div class="footer-buttons">
+        <button id="current-date">Today</button>
+        <button id="my-reminders" onclick="window.location.href='reminders.html'">My Reminders</button>
+    </div>
+</div>
+
+<!-- Reminder Modal -->
+<div class="overlay" id="overlay"></div>
+<div class="reminder-modal" id="reminder-modal">
+    <h3>Add Reminder</h3>
+    <input type="text" id="reminder-text" placeholder="Enter your reminder">
+    <button id="save-reminder">Save</button>
+    <button id="close-modal">Cancel</button>
+</div>
+
+<script>
+    const daysContainer = document.getElementById('calendar-days');
+    const monthYear = document.getElementById('month-year');
+    const currentDateButton = document.getElementById('current-date');
+    const prevButton = document.getElementById('prev');
+    const nextButton = document.getElementById('next');
+
+    const reminderModal = document.getElementById('reminder-modal');
+    const overlay = document.getElementById('overlay');
+    const reminderText = document.getElementById('reminder-text');
+    const saveReminderButton = document.getElementById('save-reminder');
+    const closeReminderButton = document.getElementById('close-modal');
+
+    let currentMonth = new Date().getMonth();
+    let currentYear = new Date().getFullYear();
+    let selectedDate = null;
+
+    const reminders = JSON.parse(localStorage.getItem('reminders')) || {};
+
+    function renderCalendar(month, year) {
+        daysContainer.innerHTML = '';
+        const firstDay = new Date(year, month).getDay();
+        const daysInMonth = new Date(year, month + 1, 0).getDate();
+
+        monthYear.textContent = new Date(year, month).toLocaleDateString('en-US', {
+            month: 'long',
+            year: 'numeric',
+        });
+
+        for (let i = 0; i < firstDay; i++) {
+            const emptyCell = document.createElement('div');
+            daysContainer.appendChild(emptyCell);
+        }
+
+        for (let day = 1; day <= daysInMonth; day++) {
+            const dayElement = document.createElement('div');
+            dayElement.className = 'calendar-day';
+            dayElement.textContent = day;
+
+            const dateKey = `${year}-${month + 1}-${day}`;
+            if (reminders[dateKey]) {
+                dayElement.style.backgroundColor = '#FFD700';
+            }
+
+            if (
+                day === new Date().getDate() &&
+                month === new Date().getMonth() &&
+                year === new Date().getFullYear()
+            ) {
+                dayElement.classList.add('today');
+            }
+
+            dayElement.addEventListener('click', () => openReminderModal(dateKey));
+
+            daysContainer.appendChild(dayElement);
+        }
+    }
+
+    function openReminderModal(date) {
+        selectedDate = date;
+        reminderModal.style.display = 'block';
+        overlay.style.display = 'block';
+    }
+
+    function closeReminderModal() {
+        reminderModal.style.display = 'none';
+        overlay.style.display = 'none';
+        reminderText.value = '';
+    }
+
+    saveReminderButton.addEventListener('click', () => {
+        if (selectedDate && reminderText.value.trim()) {
+            reminders[selectedDate] = reminderText.value;
+            localStorage.setItem('reminders', JSON.stringify(reminders));
+            closeReminderModal();
+            renderCalendar(currentMonth, currentYear);
+        }
+    });
+
+    closeReminderButton.addEventListener('click', closeReminderModal);
+    overlay.addEventListener('click', closeReminderModal);
+
+    renderCalendar(currentMonth, currentYear);
+
+    prevButton.addEventListener('click', () => {
+        currentMonth--;
+        if (currentMonth < 0) {
+            currentMonth = 11;
+            currentYear--;
+        }
+        renderCalendar(currentMonth, currentYear);
+    });
+
+    nextButton.addEventListener('click', () => {
+        currentMonth++;
+        if (currentMonth > 11) {
+            currentMonth = 0;
+            currentYear++;
+        }
+        renderCalendar(currentMonth, currentYear);
+    });
+
+    currentDateButton.addEventListener('click', () => {
+        currentMonth = new Date().getMonth();
+        currentYear = new Date().getFullYear();
+        renderCalendar(currentMonth, currentYear);
+    });
+</script>
+</body>
+</html>

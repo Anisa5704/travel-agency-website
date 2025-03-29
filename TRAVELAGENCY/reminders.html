@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Reminders</title>
+    <style>
+        body {
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background: url('img_1.png') no-repeat center center/cover;
+            background-attachment: fixed;
+            backdrop-filter: blur(5px);
+        }
+
+        .reminders-page {
+            width: 90%;
+            max-width: 600px;
+            background: rgba(0, 128, 128, 0.9);
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        .reminders-page h2 {
+            color: white;
+            margin-bottom: 20px;
+        }
+
+        .reminders-list {
+            list-style: none;
+            padding: 0;
+            color: white;
+        }
+
+        .reminders-list li {
+            background: rgba(30, 144, 255, 0.8);
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .reminders-list li button {
+            background: #ff4500;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+
+        .reminders-list li button:hover {
+            background: #ff6347;
+        }
+
+        .back-button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #1E90FF;
+            color: white;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, box-shadow 0.2s ease;
+        }
+
+        .back-button:hover {
+            background-color: #00CED1;
+        }
+    </style>
+</head>
+<body>
+<div class="reminders-page">
+    <h2>Your Reminders</h2>
+    <ul id="reminders-list" class="reminders-list">
+        <!-- The reminders will be dynamically added here -->
+    </ul>
+    <button class="back-button" onclick="window.location.href='calendar.html'">Back to Calendar</button>
+</div>
+<script>
+    const remindersList = document.getElementById('reminders-list');
+    const reminders = JSON.parse(localStorage.getItem('reminders')) || {};
+
+    // Render reminders in the list
+    Object.keys(reminders).forEach(date => {
+        const li = document.createElement('li');
+        li.innerHTML = `
+            <span>${date}: ${reminders[date]}</span>
+            <button onclick="deleteReminder('${date}')">Delete</button>
+        `;
+        remindersList.appendChild(li);
+    });
+
+    // Delete reminder and update localStorage and calendar
+    function deleteReminder(date) {
+        delete reminders[date];
+        localStorage.setItem('reminders', JSON.stringify(reminders));
+        window.location.reload();
+    }
+</script>
+</body>
+</html>
+
